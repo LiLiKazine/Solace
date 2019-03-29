@@ -17,8 +17,6 @@ class OperationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        topConstraint.constant = safeAreaTop()
         
         view.backgroundColor = CELLO
         snippetCollection.backgroundColor = CELLO
