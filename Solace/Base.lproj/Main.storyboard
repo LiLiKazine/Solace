@@ -16,14 +16,30 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pMk-hi-KIR">
+                                <rect key="frame" x="-84" y="88" width="84" height="252"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="252" id="55g-yZ-lQU"/>
+                                    <constraint firstAttribute="width" constant="84" id="SQp-No-GmI"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="rHg-p7-cud" kind="embed" id="F3b-uy-1KY"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="pMk-hi-KIR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="S0g-FX-Wee"/>
+                            <constraint firstItem="pMk-hi-KIR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="-84" id="hgX-OU-LJm"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="cu1-ai-cOJ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2079.7101449275365" y="760.71428571428567"/>
+            <point key="canvasLocation" x="2068" y="761"/>
         </scene>
         <!--Navigation View Controller-->
         <scene sceneID="HRB-Y9-e6D">
@@ -42,6 +58,71 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x4v-cQ-swN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1169.5652173913045" y="760.71428571428567"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="n4V-i8-DVt">
+            <objects>
+                <viewController id="rHg-p7-cud" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="W0u-Ob-0RS">
+                        <rect key="frame" x="0.0" y="0.0" width="84" height="252"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ys6-ja-3em" customClass="MenuItemView" customModule="Solace" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="84" height="84"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="84" id="cTO-IS-3hn"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="kind">
+                                        <integer key="value" value="0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hHH-kz-7Rv" customClass="MenuItemView" customModule="Solace" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="84" width="84" height="84"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="84" id="L3c-cn-azS"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="kind">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="id7-GL-v8c" customClass="MenuItemView" customModule="Solace" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="168" width="84" height="84"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="kind">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ys6-ja-3em" secondAttribute="trailing" id="5fd-PQ-nnN"/>
+                            <constraint firstAttribute="trailing" secondItem="hHH-kz-7Rv" secondAttribute="trailing" id="AaE-Hb-5Oi"/>
+                            <constraint firstAttribute="bottom" secondItem="id7-GL-v8c" secondAttribute="bottom" id="KKK-nF-jFG"/>
+                            <constraint firstItem="hHH-kz-7Rv" firstAttribute="leading" secondItem="W0u-Ob-0RS" secondAttribute="leading" id="LEq-JS-qgG"/>
+                            <constraint firstItem="ys6-ja-3em" firstAttribute="leading" secondItem="W0u-Ob-0RS" secondAttribute="leading" id="Pf3-zh-FEA"/>
+                            <constraint firstItem="hHH-kz-7Rv" firstAttribute="top" secondItem="ys6-ja-3em" secondAttribute="bottom" id="bhA-fT-ba4"/>
+                            <constraint firstItem="id7-GL-v8c" firstAttribute="top" secondItem="hHH-kz-7Rv" secondAttribute="bottom" id="o3E-NQ-qcy"/>
+                            <constraint firstItem="id7-GL-v8c" firstAttribute="leading" secondItem="W0u-Ob-0RS" secondAttribute="leading" id="uiJ-4C-Jus"/>
+                            <constraint firstAttribute="trailing" secondItem="id7-GL-v8c" secondAttribute="trailing" id="zIo-iV-X1H"/>
+                            <constraint firstItem="ys6-ja-3em" firstAttribute="top" secondItem="W0u-Ob-0RS" secondAttribute="top" id="zlH-hC-a9O"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="84" height="252"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kaR-FW-lJG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2027.5362318840582" y="1405.5803571428571"/>
         </scene>
     </scenes>
 </document>
