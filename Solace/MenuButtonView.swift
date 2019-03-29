@@ -16,7 +16,7 @@ enum LinePosition {
 
 class MenuButtonView: UIView {
     
-    lazy var action: (_ expanding: Bool)->Void = { _ in }
+    lazy var action: ()->Void = {}
     
     let strokeColor = WHISPER
     let animDuration: CFTimeInterval = 0.4
@@ -89,12 +89,6 @@ class MenuButtonView: UIView {
         return scale
     }
     
-    private var expanded = false
-    
-    var isExpanded: Bool {
-        return expanded
-    }
-    
     private var top: CAShapeLayer!
     private var middle: CAShapeLayer!
     private var bottom: CAShapeLayer!
@@ -124,13 +118,7 @@ class MenuButtonView: UIView {
     
     @objc private func tapped(_ sender: UITapGestureRecognizer) {
         
-        let process: CGFloat = expanded ? 0.0 : 1.0
-        
-        animate(process)
-
-        action(!expanded)
-        
-        expanded.toggle()
+        action()
         
     }
     
@@ -138,7 +126,6 @@ class MenuButtonView: UIView {
         top.transform = roslate(percent: percent, flag: true)
         middle.transform = scale(percent: percent)
         bottom.transform = roslate(percent: percent, flag: false)
-        
     }
     
     // Only override draw() if you perform custom drawing.
