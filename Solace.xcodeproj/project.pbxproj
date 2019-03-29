@@ -24,6 +24,7 @@
 		09FC3DE1224E5546006E81D6 /* SnippetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FC3DE0224E5546006E81D6 /* SnippetCollectionViewCell.swift */; };
 		09FC3DE3224E6134006E81D6 /* DispatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FC3DE2224E6134006E81D6 /* DispatchViewController.swift */; };
 		09FC3DE5224E6219006E81D6 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FC3DE4224E6219006E81D6 /* CameraViewController.swift */; };
+		09FC3DE7224E88CC006E81D6 /* FilmButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FC3DE6224E88CC006E81D6 /* FilmButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		09FC3DE0224E5546006E81D6 /* SnippetCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnippetCollectionViewCell.swift; sourceTree = "<group>"; };
 		09FC3DE2224E6134006E81D6 /* DispatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchViewController.swift; sourceTree = "<group>"; };
 		09FC3DE4224E6219006E81D6 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		09FC3DE6224E88CC006E81D6 /* FilmButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 				09FC3DE0224E5546006E81D6 /* SnippetCollectionViewCell.swift */,
 				09FC3DCD224D1986006E81D6 /* MenuButtonView.swift */,
 				09FC3DD5224DF22A006E81D6 /* MenuItemView.swift */,
+				09FC3DE6224E88CC006E81D6 /* FilmButtonView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				09FC3DE1224E5546006E81D6 /* SnippetCollectionViewCell.swift in Sources */,
+				09FC3DE7224E88CC006E81D6 /* FilmButtonView.swift in Sources */,
 				09FC3DC8224CFFEE006E81D6 /* NavigationViewController.swift in Sources */,
 				09FC3DD2224DEB7B006E81D6 /* IconsDrawing.swift in Sources */,
 				09FC3DB4224CFB06006E81D6 /* AppDelegate.swift in Sources */,

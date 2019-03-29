@@ -58,19 +58,30 @@ class CameraViewController: UIViewController {
         let frame = CGRect(x: 12, y: safeAreaTop()+44+8, width: camWidth, height: camHeight)
         previewLayer.frame = frame
         let roundCornerMask = CAShapeLayer()
-        let roundedRectPath = UIBezierPath(roundedRect: CGRect(origin: .zero, size: frame.size), byRoundingCorners: .allCorners, cornerRadii: CGSize(width: 12.0, height: 12.0))
+        let roundedRectPath = UIBezierPath(roundedRect: CGRect(origin: .zero, size: frame.size), cornerRadius: 12.0)
         roundCornerMask.path = roundedRectPath.cgPath
         roundCornerMask.fillColor = UIColor.white.cgColor
         previewLayer.mask = roundCornerMask
         previewLayer.videoGravity = .resizeAspect
         view.layer.addSublayer(previewLayer)
     
+        let filmBtn = FilmButtonView(frame: CGRect(x: (frame.maxX + frame.minX)/2-42, y: frame.maxY - 90, width: 84, height: 84))
+        view.addSubview(filmBtn)
+        
     }
     
     func startSession() {
         if !captureSession.isRunning {
             DispatchQueue.global().async {
                 self.captureSession.startRunning()
+            }
+        }
+    }
+    
+    func stopSession() {
+        if captureSession.isRunning {
+            DispatchQueue.global().async {
+                self.captureSession.stopRunning()
             }
         }
     }
