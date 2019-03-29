@@ -53,9 +53,12 @@ class MainViewController: UIViewController {
             isMenuOpen = shouldClose == 1.0
         case .changed:
             setMenu(isMenuOpen ? (1-progress) : progress)
+            menuItemContainer.layer.shouldRasterize = true
+            menuItemContainer.layer.rasterizationScale = UIScreen.main.scale
         case .ended: fallthrough
         case .cancelled: fallthrough
         case .failed:
+            menuItemContainer.layer.shouldRasterize = false
             var targetProgress: CGFloat
             if isMenuOpen {
                 targetProgress = progress < 0.5 ? 1.0 : 0.0
@@ -80,8 +83,8 @@ class MainViewController: UIViewController {
             self.setMenu(process)
         }) { _ in
             self.isMenuOpen = process == 1.0
+            self.menuItemContainer.layer.shouldRasterize = false
         }
-        
     }
     
     func setMenu(_ percent: CGFloat) {
