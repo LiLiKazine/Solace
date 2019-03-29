@@ -9,16 +9,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Operation View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="OperationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="OperationViewController" customModule="Solace" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OperationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="MainViewController" customModule="Solace" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pMk-hi-KIR">
-                                <rect key="frame" x="-84" y="88" width="84" height="252"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pMk-hi-KIR" userLabel="MenuItemContainer">
+                                <rect key="frame" x="-42" y="88" width="84" height="252"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="252" id="55g-yZ-lQU"/>
                                     <constraint firstAttribute="width" constant="84" id="SQp-No-GmI"/>
@@ -27,19 +27,33 @@
                                     <segue destination="rHg-p7-cud" kind="embed" id="F3b-uy-1KY"/>
                                 </connections>
                             </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3KD-i0-P2I">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <connections>
+                                    <segue destination="Gku-2d-uNw" kind="embed" id="Da0-4v-yZA"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="pMk-hi-KIR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="S0g-FX-Wee"/>
-                            <constraint firstItem="pMk-hi-KIR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="-84" id="hgX-OU-LJm"/>
+                            <constraint firstItem="pMk-hi-KIR" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="88" id="S0g-FX-Wee"/>
+                            <constraint firstItem="3KD-i0-P2I" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="f5O-f2-qhQ"/>
+                            <constraint firstItem="pMk-hi-KIR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="-42" id="hgX-OU-LJm"/>
+                            <constraint firstAttribute="bottom" secondItem="3KD-i0-P2I" secondAttribute="bottom" id="isb-lK-f8B"/>
+                            <constraint firstItem="3KD-i0-P2I" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="k2p-9i-nxc"/>
+                            <constraint firstAttribute="trailing" secondItem="3KD-i0-P2I" secondAttribute="trailing" id="pgc-dB-byd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="cu1-ai-cOJ"/>
+                    <connections>
+                        <outlet property="contentContainer" destination="3KD-i0-P2I" id="GCr-Lz-4X0"/>
+                        <outlet property="menuItemContainer" destination="pMk-hi-KIR" id="H4a-TM-5bW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2068" y="761"/>
+            <point key="canvasLocation" x="2066.666666666667" y="760.71428571428567"/>
         </scene>
         <!--Navigation View Controller-->
         <scene sceneID="HRB-Y9-e6D">
@@ -122,7 +136,21 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kaR-FW-lJG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2027.5362318840582" y="1405.5803571428571"/>
+            <point key="canvasLocation" x="2067" y="1504"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="XBT-jY-FQE">
+            <objects>
+                <viewController id="Gku-2d-uNw" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AaE-5R-QF5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q1i-R4-1ek" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3030" y="761"/>
         </scene>
     </scenes>
 </document>

@@ -22,7 +22,7 @@ class MenuItemView: UIView {
             setNeedsDisplay()
         }
     }
-    
+        
     @IBInspectable
     var kind: Int {
         didSet {
@@ -57,7 +57,7 @@ class MenuItemView: UIView {
             color = CELLO
         case .camera:
             path = drawCamera()
-            color = VIS_VIS
+            color = RADICAL_RED
         case .speaker:
             path = drawSpeaker()
             color = BILOBA_FLOWER

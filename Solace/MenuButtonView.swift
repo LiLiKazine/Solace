@@ -16,6 +16,8 @@ enum LinePosition {
 
 class MenuButtonView: UIView {
     
+    lazy var action: (_ expanding: Bool)->Void = { _ in }
+    
     let strokeColor = WHISPER
     let animDuration: CFTimeInterval = 0.4
     
@@ -71,32 +73,21 @@ class MenuButtonView: UIView {
     }
     
     // rotate and trnaslate
-    lazy var roslate = { [weak self] (flag: Bool) -> CABasicAnimation in
-        guard let self  = self else { return CABasicAnimation()  }
+    func roslate(percent: CGFloat, flag: Bool) -> CATransform3D {
         let factor: CGFloat = flag ? 1.0 : -1.0
-        let rotationAnim = CABasicAnimation(keyPath: "transform")
         let identity = CATransform3DIdentity
-        rotationAnim.fromValue = identity
-        let rotate = CATransform3DRotate(identity,  factor * π * 0.25, 0.0, 0.0, 1.0)
-        let translate = CATransform3DTranslate(identity, 0.0, (factor * self.bounds.height - factor * self.bounds.height * 0.05) / 2, 0.0)
+        let rotate = CATransform3DRotate(identity,  factor * π * percent * 0.25, 0.0, 0.0, 1.0)
+        let translate = CATransform3DTranslate(identity, 0.0, (factor * self.bounds.height - factor * self.bounds.height * 0.05) / 2 * percent, 0.0)
         let concat = CATransform3DConcat(rotate, translate)
-        rotationAnim.toValue = concat
-        rotationAnim.duration = self.animDuration
-        rotationAnim.fillMode = .forwards
-        rotationAnim.isRemovedOnCompletion = false
-        return rotationAnim
+        return concat
     }
     
-    lazy var scale: CABasicAnimation = {
-        let scaleAnim = CABasicAnimation(keyPath: "transform")
+    func scale(percent: CGFloat) -> CATransform3D {
         let identity = CATransform3DIdentity
-        scaleAnim.fromValue = identity
-        scaleAnim.toValue = CATransform3DScale(identity, 0.1, 1.0, 1.0)
-        scaleAnim.duration = animDuration
-        scaleAnim.fillMode = .forwards
-        scaleAnim.isRemovedOnCompletion = false
-        return scaleAnim
-    }()
+        let remainingPercentage = 1 - percent
+        let scale = CATransform3DScale(identity, max(0.1, remainingPercentage), 1.0, 1.0)
+        return scale
+    }
     
     private var expanded = false
     
@@ -132,22 +123,21 @@ class MenuButtonView: UIView {
     }
     
     @objc private func tapped(_ sender: UITapGestureRecognizer) {
-        if !expanded {
-            top.add(roslate(true), forKey: "expand")
-            middle.add(scale, forKey: "expand")
-            bottom.add(roslate(false), forKey: "expand")
-        } else {
-            let restoreAnim = CABasicAnimation(keyPath: "transform")
-            restoreAnim.toValue = CATransform3DIdentity
-            restoreAnim.duration = animDuration
-            restoreAnim.fillMode = .forwards
-            restoreAnim.isRemovedOnCompletion = false
-            top.add(restoreAnim, forKey: "restore")
-            middle.add(restoreAnim, forKey: "restore")
-            bottom.add(restoreAnim, forKey: "restore")
-        }
+        
+        let process: CGFloat = expanded ? 0.0 : 1.0
+        
+        animate(process)
+
+        action(!expanded)
         
         expanded.toggle()
+        
+    }
+    
+    func animate(_ percent: CGFloat) {
+        top.transform = roslate(percent: percent, flag: true)
+        middle.transform = scale(percent: percent)
+        bottom.transform = roslate(percent: percent, flag: false)
         
     }
     

@@ -11,7 +11,7 @@
 		09FC3DB9224CFB06006E81D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09FC3DB7224CFB06006E81D6 /* Main.storyboard */; };
 		09FC3DBB224CFB07006E81D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09FC3DBA224CFB07006E81D6 /* Assets.xcassets */; };
 		09FC3DBE224CFB07006E81D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09FC3DBC224CFB07006E81D6 /* LaunchScreen.storyboard */; };
-		09FC3DC6224CFC3A006E81D6 /* OperationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FC3DC5224CFC3A006E81D6 /* OperationViewController.swift */; };
+		09FC3DC6224CFC3A006E81D6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FC3DC5224CFC3A006E81D6 /* MainViewController.swift */; };
 		09FC3DC8224CFFEE006E81D6 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FC3DC7224CFFEE006E81D6 /* NavigationViewController.swift */; };
 		09FC3DCA224D002A006E81D6 /* ColorPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FC3DC9224D002A006E81D6 /* ColorPresets.swift */; };
 		09FC3DCE224D1986006E81D6 /* MenuButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FC3DCD224D1986006E81D6 /* MenuButtonView.swift */; };
@@ -27,7 +27,7 @@
 		09FC3DBA224CFB07006E81D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		09FC3DBD224CFB07006E81D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		09FC3DBF224CFB07006E81D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		09FC3DC5224CFC3A006E81D6 /* OperationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationViewController.swift; sourceTree = "<group>"; };
+		09FC3DC5224CFC3A006E81D6 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		09FC3DC7224CFFEE006E81D6 /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		09FC3DC9224D002A006E81D6 /* ColorPresets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPresets.swift; sourceTree = "<group>"; };
 		09FC3DCD224D1986006E81D6 /* MenuButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButtonView.swift; sourceTree = "<group>"; };
@@ -73,7 +73,7 @@
 				09FC3DC9224D002A006E81D6 /* ColorPresets.swift */,
 				09FC3DB7224CFB06006E81D6 /* Main.storyboard */,
 				09FC3DC7224CFFEE006E81D6 /* NavigationViewController.swift */,
-				09FC3DC5224CFC3A006E81D6 /* OperationViewController.swift */,
+				09FC3DC5224CFC3A006E81D6 /* MainViewController.swift */,
 				09FC3DCD224D1986006E81D6 /* MenuButtonView.swift */,
 				09FC3DD5224DF22A006E81D6 /* MenuItemView.swift */,
 				09FC3DCF224D2E05006E81D6 /* Global.swift */,
@@ -160,7 +160,7 @@
 				09FC3DD6224DF22A006E81D6 /* MenuItemView.swift in Sources */,
 				09FC3DCA224D002A006E81D6 /* ColorPresets.swift in Sources */,
 				09FC3DCE224D1986006E81D6 /* MenuButtonView.swift in Sources */,
-				09FC3DC6224CFC3A006E81D6 /* OperationViewController.swift in Sources */,
+				09FC3DC6224CFC3A006E81D6 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
