@@ -143,10 +143,10 @@
             </objects>
             <point key="canvasLocation" x="2067" y="1504"/>
         </scene>
-        <!--View Controller-->
+        <!--Dispatch View Controller-->
         <scene sceneID="XBT-jY-FQE">
             <objects>
-                <viewController id="Gku-2d-uNw" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DispatchViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Gku-2d-uNw" customClass="DispatchViewController" customModule="Solace" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AaE-5R-QF5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -160,10 +160,19 @@
                                             <segue destination="S1P-sb-Gvc" kind="embed" id="ARY-5e-UoR"/>
                                         </connections>
                                     </containerView>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ym-JV-oeQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                        <connections>
+                                            <segue destination="RVY-rX-Sxb" kind="embed" id="fgs-qC-OR0"/>
+                                        </connections>
+                                    </containerView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="xlI-gE-2Ez" firstAttribute="top" secondItem="yxK-Go-4ZB" secondAttribute="top" id="3gZ-32-W1g"/>
+                                    <constraint firstItem="2ym-JV-oeQ" firstAttribute="top" secondItem="yxK-Go-4ZB" secondAttribute="top" id="RkS-3o-0oG"/>
+                                    <constraint firstItem="2ym-JV-oeQ" firstAttribute="leading" secondItem="yxK-Go-4ZB" secondAttribute="leading" id="XLZ-8o-BAO"/>
+                                    <constraint firstAttribute="bottom" secondItem="2ym-JV-oeQ" secondAttribute="bottom" id="iYm-qP-okV"/>
                                     <constraint firstAttribute="bottom" secondItem="xlI-gE-2Ez" secondAttribute="bottom" id="jF0-Na-7nQ"/>
                                     <constraint firstItem="xlI-gE-2Ez" firstAttribute="leading" secondItem="yxK-Go-4ZB" secondAttribute="leading" id="p6m-j7-3bY"/>
                                 </constraints>
@@ -175,13 +184,20 @@
                             <constraint firstItem="yxK-Go-4ZB" firstAttribute="leading" secondItem="AaE-5R-QF5" secondAttribute="leading" id="702-au-pCu"/>
                             <constraint firstItem="yxK-Go-4ZB" firstAttribute="top" secondItem="AaE-5R-QF5" secondAttribute="top" id="Bhx-F7-TrC"/>
                             <constraint firstItem="xlI-gE-2Ez" firstAttribute="width" secondItem="AaE-5R-QF5" secondAttribute="width" id="GMx-7L-gaQ"/>
+                            <constraint firstItem="2ym-JV-oeQ" firstAttribute="width" secondItem="AaE-5R-QF5" secondAttribute="width" id="txx-CP-g3L"/>
                             <constraint firstItem="yxK-Go-4ZB" firstAttribute="width" secondItem="AaE-5R-QF5" secondAttribute="width" multiplier="2" id="zoA-9a-Qpu"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cameraContainer" destination="2ym-JV-oeQ" id="SFg-YB-gDg"/>
+                        <outlet property="cameraLeadingConstraint" destination="XLZ-8o-BAO" id="9NZ-d3-tEX"/>
+                        <outlet property="operationContainer" destination="xlI-gE-2Ez" id="s4N-bm-4g9"/>
+                        <outlet property="operationLeadingConstraint" destination="p6m-j7-3bY" id="VmR-o1-aX8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q1i-R4-1ek" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3030" y="761"/>
+            <point key="canvasLocation" x="3028.985507246377" y="760.71428571428567"/>
         </scene>
         <!--Operation View Controller-->
         <scene sceneID="aV6-fm-x0y">
@@ -277,6 +293,20 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5V-qK-gDX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3028.985507246377" y="1512.7232142857142"/>
+        </scene>
+        <!--Camera View Controller-->
+        <scene sceneID="yZX-fo-niM">
+            <objects>
+                <viewController storyboardIdentifier="CameraViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RVY-rX-Sxb" customClass="CameraViewController" customModule="Solace" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5Eo-qo-FAC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yvy-UA-pDm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4046" y="760"/>
         </scene>
     </scenes>
 </document>

@@ -22,6 +22,8 @@
 		09FC3DDB224E51D9006E81D6 /* OperationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FC3DDA224E51D9006E81D6 /* OperationViewController.swift */; };
 		09FC3DDD224E54A9006E81D6 /* SnippetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FC3DDC224E54A9006E81D6 /* SnippetModel.swift */; };
 		09FC3DE1224E5546006E81D6 /* SnippetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FC3DE0224E5546006E81D6 /* SnippetCollectionViewCell.swift */; };
+		09FC3DE3224E6134006E81D6 /* DispatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FC3DE2224E6134006E81D6 /* DispatchViewController.swift */; };
+		09FC3DE5224E6219006E81D6 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FC3DE4224E6219006E81D6 /* CameraViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		09FC3DDA224E51D9006E81D6 /* OperationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationViewController.swift; sourceTree = "<group>"; };
 		09FC3DDC224E54A9006E81D6 /* SnippetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnippetModel.swift; sourceTree = "<group>"; };
 		09FC3DE0224E5546006E81D6 /* SnippetCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnippetCollectionViewCell.swift; sourceTree = "<group>"; };
+		09FC3DE2224E6134006E81D6 /* DispatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchViewController.swift; sourceTree = "<group>"; };
+		09FC3DE4224E6219006E81D6 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +99,9 @@
 				09FC3DC7224CFFEE006E81D6 /* NavigationViewController.swift */,
 				09FC3DC5224CFC3A006E81D6 /* MainViewController.swift */,
 				09FC3DD7224E50B5006E81D6 /* MenuViewController.swift */,
+				09FC3DE2224E6134006E81D6 /* DispatchViewController.swift */,
 				09FC3DDA224E51D9006E81D6 /* OperationViewController.swift */,
+				09FC3DE4224E6219006E81D6 /* CameraViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -199,6 +205,8 @@
 				09FC3DDB224E51D9006E81D6 /* OperationViewController.swift in Sources */,
 				09FC3DCA224D002A006E81D6 /* ColorPresets.swift in Sources */,
 				09FC3DDD224E54A9006E81D6 /* SnippetModel.swift in Sources */,
+				09FC3DE3224E6134006E81D6 /* DispatchViewController.swift in Sources */,
+				09FC3DE5224E6219006E81D6 /* CameraViewController.swift in Sources */,
 				09FC3DCE224D1986006E81D6 /* MenuButtonView.swift in Sources */,
 				09FC3DC6224CFC3A006E81D6 /* MainViewController.swift in Sources */,
 			);

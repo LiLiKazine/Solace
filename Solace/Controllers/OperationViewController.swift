@@ -10,9 +10,6 @@ import UIKit
 
 class OperationViewController: UIViewController {
     
-    
-    var topMargin: CGFloat = 20.0
-    
     var snippets: [SnippetModel] = []
     
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
@@ -21,11 +18,7 @@ class OperationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if #available(iOS 11.0, *) {
-            let window = UIApplication.shared.keyWindow
-            topMargin = window?.safeAreaInsets.top ?? 20.0
-        }
-        topConstraint.constant = topMargin
+        topConstraint.constant = safeAreaTop()
         
         view.backgroundColor = CELLO
         snippetCollection.backgroundColor = CELLO
