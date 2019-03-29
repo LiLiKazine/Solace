@@ -7,8 +7,14 @@
 //
 
 import UIKit
+import AVFoundation
 
 class CameraViewController: UIViewController {
+    
+    lazy var captureSession = AVCaptureSession()
+    let videoOutput = AVCaptureVideoDataOutput()
+    var previewLayer: AVCaptureVideoPreviewLayer!
+    var activeInput: AVCaptureDeviceInput!
 
     override func viewDidLoad() {
         super.viewDidLoad()
