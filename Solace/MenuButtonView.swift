@@ -70,6 +70,7 @@ class MenuButtonView: UIView {
         context.strokePath()
     }
     
+    // rotate and trnaslate
     lazy var roslate = { [weak self] (flag: Bool) -> CABasicAnimation in
         guard let self  = self else { return CABasicAnimation()  }
         let factor: CGFloat = flag ? 1.0 : -1.0
@@ -97,12 +98,15 @@ class MenuButtonView: UIView {
         return scaleAnim
     }()
     
-    var expanded = false
+    private var expanded = false
     
+    var isExpanded: Bool {
+        return expanded
+    }
     
-    var top: CAShapeLayer!
-    var middle: CAShapeLayer!
-    var bottom: CAShapeLayer!
+    private var top: CAShapeLayer!
+    private var middle: CAShapeLayer!
+    private var bottom: CAShapeLayer!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -127,7 +131,7 @@ class MenuButtonView: UIView {
         addGestureRecognizer(tapGesture)
     }
     
-    @objc func tapped(_ sender: UITapGestureRecognizer) {
+    @objc private func tapped(_ sender: UITapGestureRecognizer) {
         if !expanded {
             top.add(roslate(true), forKey: "expand")
             middle.add(scale, forKey: "expand")
