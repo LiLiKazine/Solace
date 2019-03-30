@@ -20,3 +20,10 @@ func safeAreaTop() -> CGFloat {
     return topMargin
 }
 
+func timeFormatter(time: UInt) -> String {
+    let hours = time / 3600
+    let minutes = (time / 60) % 60
+    let seconds = time % 60
+    
+    return String(format: "%02i:%02i:%02i", arguments: [hours, minutes, seconds])
+}

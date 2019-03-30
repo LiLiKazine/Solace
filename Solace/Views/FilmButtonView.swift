@@ -10,9 +10,13 @@ import UIKit
 
 class FilmButtonView: UIView {
     
+    var action: (()->Void)?
+    
     var isOn = false {
         willSet {
-            animate(newValue)
+            if newValue != isOn {
+                animate(newValue)
+            }
         }
     }
     let animDuration: Double = 0.4
@@ -74,7 +78,10 @@ class FilmButtonView: UIView {
     
 
     @objc func tapped(_ gesture: UITapGestureRecognizer) {
-        isOn.toggle()
+        
+        if let cb = action {
+            cb()
+        }
     }
     
     
