@@ -9,20 +9,29 @@
 import UIKit
 
 class DispatchViewController: UIViewController {
+    
     @IBOutlet weak var operationContainer: UIView!
     @IBOutlet weak var operationLeadingConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var cameraContainer: UIView!
     @IBOutlet weak var cameraLeadingConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var recorderContainer: UIView!
+    @IBOutlet weak var recorderLeadingConstraint: NSLayoutConstraint!
+    
     var cameraVC: CameraViewController?
     var operationVC: OperationViewController?
     
+    var leadingConstraintForHide: CGFloat {
+        return view.bounds.width
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let camVC = cameraVC, let opVC = operationVC as? AddVideoSnippetProtocol {
+        if let camVC = cameraVC, let opVC = operationVC {
             camVC.delegate = opVC
         }
+        
     }
     
 
@@ -41,4 +50,46 @@ class DispatchViewController: UIViewController {
         }
     }
 
+}
+
+extension DispatchViewController: MenuOptionProtocol {
+    
+    func optionSelected(kind: ItemKind) {
+       
+        adjust(for: kind, show: true)
+        
+        for val in ItemKind.all() {
+            if val != kind {
+                adjust(for: val, show: false)
+            }
+        }
+    }
+    
+    func findConstraint(from kind: ItemKind) -> NSLayoutConstraint {
+        switch kind {
+        case .adjust:
+            return operationLeadingConstraint
+        case .camera:
+            return cameraLeadingConstraint
+        case .speaker:
+            return recorderLeadingConstraint
+        }
+    }
+    
+    func adjust(for kind: ItemKind, show: Bool) {
+        let constraint = findConstraint(from: kind)
+        
+        if show && constraint.constant != 0 {
+            constraint.constant = 0
+        }
+        if !show && constraint.constant != leadingConstraintForHide {
+            constraint.constant = leadingConstraintForHide
+        }
+        
+        UIView.animate(withDuration: 0.7) {
+            self.view.layoutIfNeeded()
+        }
+        
+    }
+    
 }

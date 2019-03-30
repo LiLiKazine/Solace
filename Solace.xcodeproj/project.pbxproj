@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		094526D2224F58EB00AF0D0F /* RecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094526D1224F58EB00AF0D0F /* RecorderViewController.swift */; };
 		09FC3DB4224CFB06006E81D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FC3DB3224CFB06006E81D6 /* AppDelegate.swift */; };
 		09FC3DB9224CFB06006E81D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09FC3DB7224CFB06006E81D6 /* Main.storyboard */; };
 		09FC3DBB224CFB07006E81D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09FC3DBA224CFB07006E81D6 /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		094526D1224F58EB00AF0D0F /* RecorderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderViewController.swift; sourceTree = "<group>"; };
 		09FC3DB0224CFB06006E81D6 /* Solace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Solace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09FC3DB3224CFB06006E81D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		09FC3DB8224CFB06006E81D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				09FC3DE2224E6134006E81D6 /* DispatchViewController.swift */,
 				09FC3DDA224E51D9006E81D6 /* OperationViewController.swift */,
 				09FC3DE4224E6219006E81D6 /* CameraViewController.swift */,
+				094526D1224F58EB00AF0D0F /* RecorderViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -210,6 +213,7 @@
 				09FC3DCA224D002A006E81D6 /* ColorPresets.swift in Sources */,
 				09FC3DDD224E54A9006E81D6 /* SnippetModel.swift in Sources */,
 				09FC3DE3224E6134006E81D6 /* DispatchViewController.swift in Sources */,
+				094526D2224F58EB00AF0D0F /* RecorderViewController.swift in Sources */,
 				09FC3DE5224E6219006E81D6 /* CameraViewController.swift in Sources */,
 				09FC3DCE224D1986006E81D6 /* MenuButtonView.swift in Sources */,
 				09FC3DC6224CFC3A006E81D6 /* MainViewController.swift in Sources */,

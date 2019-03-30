@@ -12,6 +12,10 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var menuItemContainer: UIView!
     @IBOutlet weak var contentContainer: UIView!
+    
+    var dispatchVC: DispatchViewController!
+    var menuVC: MenuViewController!
+    
     var menuButton: MenuButtonView!
     
     var hideStatusBar: Bool = true
@@ -30,6 +34,10 @@ class MainViewController: UIViewController {
         navigationController?.isNavigationBarHidden = true
         menuItemContainer.layer.anchorPoint.x = 1.0
         setMenu(0.0)
+        
+        if let menuVC = menuVC, let dispatchVC = dispatchVC {
+            menuVC.delegate = dispatchVC
+        }
         
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
         view.addGestureRecognizer(panGesture)
@@ -109,13 +117,17 @@ class MainViewController: UIViewController {
             self.navigationController?.isNavigationBarHidden = false
         }, completion: nil)
     }
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if let dispatchVC = segue.destination as? DispatchViewController {
+            self.dispatchVC = dispatchVC
+        }
+        if let menuVC = segue.destination as? MenuViewController {
+            self.menuVC = menuVC
+        }
     }
-    */
 }

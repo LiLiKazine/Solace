@@ -12,10 +12,16 @@ enum ItemKind: Int {
     case adjust = 0
     case camera
     case speaker
+    
+    static func all() -> [ItemKind] {
+        return [.adjust, .camera, .speaker]
+    }
 }
 
 @IBDesignable
 class MenuItemView: UIView {
+    
+    var action: (()->Void)?
     
     var itemKind: ItemKind? {
         didSet {
@@ -37,12 +43,24 @@ class MenuItemView: UIView {
     init(of kind: ItemKind, frame: CGRect) {
         self.kind = kind.rawValue
         super.init(frame: frame)
-
+        preset()
     }
     
     required init?(coder aDecoder: NSCoder) {
         kind = 0
         super.init(coder: aDecoder)
+        preset()
+    }
+    
+    private func preset() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapped(_:)))
+        addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func tapped(_ gesture: UITapGestureRecognizer) {
+        if let cb = action {
+            cb()
+        }
     }
 
     // Only override draw() if you perform custom drawing.

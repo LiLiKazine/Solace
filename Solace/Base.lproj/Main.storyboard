@@ -128,6 +128,7 @@
                             <constraint firstAttribute="trailing" secondItem="id7-GL-v8c" secondAttribute="trailing" id="zIo-iV-X1H"/>
                             <constraint firstItem="ys6-ja-3em" firstAttribute="top" secondItem="W0u-Ob-0RS" secondAttribute="top" id="zlH-hC-a9O"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="dVv-LZ-vl5"/>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -166,14 +167,23 @@
                                             <segue destination="RVY-rX-Sxb" kind="embed" id="fgs-qC-OR0"/>
                                         </connections>
                                     </containerView>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cea-NS-tKZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                        <connections>
+                                            <segue destination="qNT-hn-jWE" kind="embed" id="Lta-NC-RLo"/>
+                                        </connections>
+                                    </containerView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="xlI-gE-2Ez" firstAttribute="top" secondItem="yxK-Go-4ZB" secondAttribute="top" id="3gZ-32-W1g"/>
+                                    <constraint firstAttribute="bottom" secondItem="cea-NS-tKZ" secondAttribute="bottom" id="4ih-F0-Fjl"/>
                                     <constraint firstItem="2ym-JV-oeQ" firstAttribute="top" secondItem="yxK-Go-4ZB" secondAttribute="top" id="RkS-3o-0oG"/>
                                     <constraint firstItem="2ym-JV-oeQ" firstAttribute="leading" secondItem="yxK-Go-4ZB" secondAttribute="leading" id="XLZ-8o-BAO"/>
+                                    <constraint firstItem="cea-NS-tKZ" firstAttribute="leading" secondItem="yxK-Go-4ZB" secondAttribute="leading" id="Xdb-30-h7o"/>
                                     <constraint firstAttribute="bottom" secondItem="2ym-JV-oeQ" secondAttribute="bottom" id="iYm-qP-okV"/>
                                     <constraint firstAttribute="bottom" secondItem="xlI-gE-2Ez" secondAttribute="bottom" id="jF0-Na-7nQ"/>
+                                    <constraint firstItem="cea-NS-tKZ" firstAttribute="top" secondItem="yxK-Go-4ZB" secondAttribute="top" id="oUd-KN-LfC"/>
                                     <constraint firstItem="xlI-gE-2Ez" firstAttribute="leading" secondItem="yxK-Go-4ZB" secondAttribute="leading" id="p6m-j7-3bY"/>
                                 </constraints>
                             </view>
@@ -184,15 +194,19 @@
                             <constraint firstItem="yxK-Go-4ZB" firstAttribute="leading" secondItem="AaE-5R-QF5" secondAttribute="leading" id="702-au-pCu"/>
                             <constraint firstItem="yxK-Go-4ZB" firstAttribute="top" secondItem="AaE-5R-QF5" secondAttribute="top" id="Bhx-F7-TrC"/>
                             <constraint firstItem="xlI-gE-2Ez" firstAttribute="width" secondItem="AaE-5R-QF5" secondAttribute="width" id="GMx-7L-gaQ"/>
+                            <constraint firstItem="cea-NS-tKZ" firstAttribute="width" secondItem="AaE-5R-QF5" secondAttribute="width" id="TFP-xy-TJm"/>
                             <constraint firstItem="2ym-JV-oeQ" firstAttribute="width" secondItem="AaE-5R-QF5" secondAttribute="width" id="txx-CP-g3L"/>
                             <constraint firstItem="yxK-Go-4ZB" firstAttribute="width" secondItem="AaE-5R-QF5" secondAttribute="width" multiplier="2" id="zoA-9a-Qpu"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="qU6-mV-KtB"/>
                     </view>
                     <connections>
                         <outlet property="cameraContainer" destination="2ym-JV-oeQ" id="SFg-YB-gDg"/>
                         <outlet property="cameraLeadingConstraint" destination="XLZ-8o-BAO" id="9NZ-d3-tEX"/>
                         <outlet property="operationContainer" destination="xlI-gE-2Ez" id="s4N-bm-4g9"/>
                         <outlet property="operationLeadingConstraint" destination="p6m-j7-3bY" id="VmR-o1-aX8"/>
+                        <outlet property="recorderContainer" destination="cea-NS-tKZ" id="8Qp-6O-ZB3"/>
+                        <outlet property="recorderLeadingConstraint" destination="Xdb-30-h7o" id="jDu-4r-UMw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q1i-R4-1ek" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -284,6 +298,7 @@
                             <constraint firstItem="m8l-3M-v3h" firstAttribute="top" secondItem="HmL-v8-cCb" secondAttribute="top" id="caA-Ff-5rW"/>
                             <constraint firstAttribute="trailing" secondItem="m8l-3M-v3h" secondAttribute="trailing" id="sx1-rX-Xp1"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="7RQ-82-lP5"/>
                     </view>
                     <connections>
                         <outlet property="snippetCollection" destination="m8l-3M-v3h" id="NiS-JB-dar"/>
@@ -302,11 +317,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="4FJ-CQ-Jeg"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yvy-UA-pDm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4046" y="760"/>
+        </scene>
+        <!--Recorder View Controller-->
+        <scene sceneID="MdY-cu-cSH">
+            <objects>
+                <viewController storyboardIdentifier="RecorderViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qNT-hn-jWE" customClass="RecorderViewController" customModule="Solace" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tA4-CS-vAW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="98a-an-IMp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3967" y="1503"/>
         </scene>
     </scenes>
 </document>

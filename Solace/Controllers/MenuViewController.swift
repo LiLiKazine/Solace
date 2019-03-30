@@ -8,16 +8,31 @@
 
 import UIKit
 
+protocol MenuOptionProtocol {
+    func optionSelected(kind: ItemKind)
+}
+
 class MenuViewController: UIViewController {
 
     @IBOutlet weak var itemAdjust: MenuItemView!
     @IBOutlet weak var itemCamera: MenuItemView!
     @IBOutlet weak var itemSpeaker: MenuItemView!
     
+    var delegate: MenuOptionProtocol?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        itemAdjust.action = { [weak self] in  self?.action(kind: .adjust) }
+        itemCamera.action = { [weak self] in  self?.action(kind: .camera) }
+        itemSpeaker.action = { [weak self] in  self?.action(kind: .speaker) }
 
-        // Do any additional setup after loading the view.
+    }
+    
+    func action(kind: ItemKind) {
+        if let delegate = delegate {
+            delegate.optionSelected(kind: kind)
+        }
     }
     
 
