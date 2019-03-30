@@ -99,6 +99,9 @@ extension OperationViewController: UICollectionViewDragDelegate,  UICollectionVi
 extension OperationViewController: AddVideoSnippetProtocol {
     func addVideoSnippet(snippet: SnippetModel) {
         snippets.append(snippet)
+        DispatchQueue.main.async {
+            self.snippetCollection.reloadData()
+        }
     }
 }
 
