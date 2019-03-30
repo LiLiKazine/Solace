@@ -10,10 +10,13 @@ import UIKit
 import AVFoundation
 import Photos
 
-class CameraViewController: UIViewController {
-    
-    lazy var photoLibrary = PHPhotoLibrary.shared()
+protocol AddVideoSnippetProtocol {
+    func addVideoSnippet(snippet: SnippetModel)
+}
 
+class CameraViewController: UIViewController {
+        
+    var delegate: AddVideoSnippetProtocol?
     
     lazy var captureSession = AVCaptureSession()
     let movieOutput = AVCaptureMovieFileOutput()
@@ -207,19 +210,41 @@ class CameraViewController: UIViewController {
         }
     }
     
+    func thumbnail(from url: URL, completion: @escaping (_ thumbnail: UIImage?)->Void){
+        DispatchQueue.global().async {
+            let asset = AVAsset(url: url)
+            let imageGenerator = AVAssetImageGenerator(asset: asset)
+            imageGenerator.appliesPreferredTrackTransform = true
+            do {
+                let imageRef = try imageGenerator.copyCGImage(at: .zero, actualTime: nil)
+                let image = UIImage(cgImage: imageRef)
+                completion(image)
+            } catch {
+                completion(nil)
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
     func saveMovieToLibarary(url: URL) {
-        
+        let photoLibrary = PHPhotoLibrary.shared()
+
         photoLibrary.performChanges({
             PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: url)
         }) { (isSuccess, error) in
             if isSuccess {
                 // Set thumbnail
 //                self.setVideoThumbnailFromURL(movieURL: movieURL)
+                self.thumbnail(from: url, completion: { [weak self] image in
+                    guard let image = image, let delegate = self?.delegate else {return}
+                    let name = String(url.absoluteString.split(separator: "/").last ?? "tempname\(Date().description)")
+                    let snippet = SnippetModel(name: name, url: url, type: .video, thumbnail: image)
+                    delegate.addVideoSnippet(snippet: snippet)
+                })
             } else {
                 print("Error writing to photo library: \(error!.localizedDescription)")
             }
         }
-        
     }
 
     /*

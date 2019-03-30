@@ -9,22 +9,18 @@
 import UIKit
 
 class OperationViewController: UIViewController {
-    
-    var snippets: [SnippetModel] = []
-    
+        
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     @IBOutlet weak var snippetCollection: UICollectionView!
+        
+    var snippets: [SnippetModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = CELLO
+                
         snippetCollection.backgroundColor = CELLO
-        let test = SnippetModel(name: "a test")
-        snippets.append(test)
-        snippets.append(test)
-        snippets.append(test)
-
         snippetCollection.dragInteractionEnabled = true
         snippetCollection.reloadData()
     }
@@ -97,5 +93,11 @@ extension OperationViewController: UICollectionViewDragDelegate,  UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal {
         return UICollectionViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
+    }
+}
+
+extension OperationViewController: AddVideoSnippetProtocol {
+    func addVideoSnippet(snippet: SnippetModel) {
+        snippets.append(snippet)
     }
 }
