@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol ControllerDispatchProtocol {
+    func controllerWillHide()
+    func controllerWillShow()
+}
+
 class DispatchViewController: UIViewController {
     
     @IBOutlet weak var dispatchView: UIView!
@@ -21,9 +26,14 @@ class DispatchViewController: UIViewController {
     @IBOutlet weak var recorderContainer: UIView!
     @IBOutlet weak var recorderLeadingConstraint: NSLayoutConstraint!
     
-    var cameraVC: CameraViewController?
-    var operationVC: OperationViewController?
+    var cameraVC: CameraViewController!
+    var operationVC: OperationViewController!
+    var recorderVC: RecorderViewController!
     
+    var delegateOpration: ControllerDispatchProtocol?
+    var delegateCamera: ControllerDispatchProtocol?
+    var delegateRecorder: ControllerDispatchProtocol?
+
     var leadingConstraintForHide: CGFloat {
         return view.bounds.width
     }
@@ -50,12 +60,17 @@ class DispatchViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        if let cameraVC = segue.destination as? CameraViewController {
-            self.cameraVC = cameraVC
-            
-        }
         if let operationVC = segue.destination as? OperationViewController {
             self.operationVC = operationVC
+            delegateOpration = operationVC
+        }
+        if let cameraVC = segue.destination as? CameraViewController {
+            self.cameraVC = cameraVC
+            delegateCamera = cameraVC
+        }
+        if let recorderVC = segue.destination as? RecorderViewController {
+            self.recorderVC = recorderVC
+            delegateRecorder = recorderVC
         }
     }
 
@@ -63,43 +78,37 @@ class DispatchViewController: UIViewController {
 
 extension DispatchViewController: MenuOptionProtocol {
     
+    
+    // delegate function
     func optionSelected(kind: ItemKind) {
         
-        dispatchView.bringSubviewToFront(findView(from: kind))
+        find(from: kind).delegate?.controllerWillShow()
+        
+        dispatchView.bringSubviewToFront(find(from: kind).container)
        
         adjust(for: kind, show: true)
         
         for val in ItemKind.all() {
             if val != kind {
                 adjust(for: val, show: false)
+                find(from: val).delegate?.controllerWillHide()
             }
         }
     }
     
-    func findConstraint(from kind: ItemKind) -> NSLayoutConstraint {
+    func find(from kind: ItemKind) -> (delegate: ControllerDispatchProtocol?, container: UIView, constrint: NSLayoutConstraint) {
         switch kind {
         case .adjust:
-            return operationLeadingConstraint
+            return (delegateOpration, operationContainer, operationLeadingConstraint)
         case .camera:
-            return cameraLeadingConstraint
+            return (delegateCamera, cameraContainer, cameraLeadingConstraint)
         case .speaker:
-            return recorderLeadingConstraint
-        }
-    }
-    
-    func findView(from kind: ItemKind) -> UIView {
-        switch kind {
-        case .adjust:
-            return operationContainer
-        case .camera:
-            return cameraContainer
-        case .speaker:
-            return recorderContainer
+            return (delegateRecorder,recorderContainer, recorderLeadingConstraint)
         }
     }
     
     func adjust(for kind: ItemKind, show: Bool) {
-        let constraint = findConstraint(from: kind)
+        let constraint = find(from: kind).constrint
         
         if show && constraint.constant != 0 {
             constraint.constant = 0

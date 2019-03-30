@@ -101,3 +101,14 @@ extension OperationViewController: AddVideoSnippetProtocol {
         snippets.append(snippet)
     }
 }
+
+extension OperationViewController: ControllerDispatchProtocol {
+    
+    func controllerWillShow() {
+        
+    }
+    
+    func controllerWillHide() {
+        
+    }
+}

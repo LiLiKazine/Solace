@@ -46,6 +46,23 @@ class CameraViewController: UIViewController {
             setupPreview()
             startSession()
         }
+        
+    }
+    
+    func startup() {
+        if !checkAuthorization() {
+            PHPhotoLibrary.requestAuthorization { status in
+                if status != .authorized {
+                    return
+                }
+            }
+        }
+       
+        startSession()
+    }
+    
+    func shutdown() {
+        stopSession()
     }
     
     func checkAuthorization() -> Bool {
@@ -276,5 +293,16 @@ extension CameraViewController: AVCaptureFileOutputRecordingDelegate {
         resetTimer()
     }
     
+}
+
+extension CameraViewController: ControllerDispatchProtocol {
+    
+    func controllerWillShow() {
+        startup()
+    }
+    
+    func controllerWillHide() {
+        stopSession()
+    }
     
 }

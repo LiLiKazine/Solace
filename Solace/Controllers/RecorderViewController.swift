@@ -28,3 +28,16 @@ class RecorderViewController: UIViewController {
     */
 
 }
+
+
+extension RecorderViewController: ControllerDispatchProtocol {
+    
+    func controllerWillShow() {
+        
+    }
+    
+    func controllerWillHide() {
+        
+    }
+    
+}
