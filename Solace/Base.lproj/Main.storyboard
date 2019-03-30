@@ -203,6 +203,7 @@
                     <connections>
                         <outlet property="cameraContainer" destination="2ym-JV-oeQ" id="SFg-YB-gDg"/>
                         <outlet property="cameraLeadingConstraint" destination="XLZ-8o-BAO" id="9NZ-d3-tEX"/>
+                        <outlet property="dispatchView" destination="yxK-Go-4ZB" id="7F7-dy-0hf"/>
                         <outlet property="operationContainer" destination="xlI-gE-2Ez" id="s4N-bm-4g9"/>
                         <outlet property="operationLeadingConstraint" destination="p6m-j7-3bY" id="VmR-o1-aX8"/>
                         <outlet property="recorderContainer" destination="cea-NS-tKZ" id="8Qp-6O-ZB3"/>

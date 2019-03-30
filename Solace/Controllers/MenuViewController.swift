@@ -30,7 +30,9 @@ class MenuViewController: UIViewController {
     }
     
     func action(kind: ItemKind) {
-        if let delegate = delegate {
+        
+        if let delegate = delegate, let mainVC = parent as? MainViewController {
+            mainVC.menuAction()
             delegate.optionSelected(kind: kind)
         }
     }

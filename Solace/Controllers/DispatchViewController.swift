@@ -10,6 +10,8 @@ import UIKit
 
 class DispatchViewController: UIViewController {
     
+    @IBOutlet weak var dispatchView: UIView!
+    
     @IBOutlet weak var operationContainer: UIView!
     @IBOutlet weak var operationLeadingConstraint: NSLayoutConstraint!
     
@@ -28,10 +30,17 @@ class DispatchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        dispatchView.backgroundColor = WHISPER
+        
         if let camVC = cameraVC, let opVC = operationVC {
             camVC.delegate = opVC
         }
         
+        operationLeadingConstraint.constant = 0
+        cameraLeadingConstraint.constant = leadingConstraintForHide
+        recorderLeadingConstraint.constant = leadingConstraintForHide
+        view.layoutIfNeeded()
     }
     
 
@@ -55,6 +64,8 @@ class DispatchViewController: UIViewController {
 extension DispatchViewController: MenuOptionProtocol {
     
     func optionSelected(kind: ItemKind) {
+        
+        dispatchView.bringSubviewToFront(findView(from: kind))
        
         adjust(for: kind, show: true)
         
@@ -73,6 +84,17 @@ extension DispatchViewController: MenuOptionProtocol {
             return cameraLeadingConstraint
         case .speaker:
             return recorderLeadingConstraint
+        }
+    }
+    
+    func findView(from kind: ItemKind) -> UIView {
+        switch kind {
+        case .adjust:
+            return operationContainer
+        case .camera:
+            return cameraContainer
+        case .speaker:
+            return recorderContainer
         }
     }
     
