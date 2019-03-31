@@ -7,13 +7,23 @@
 //
 
 import UIKit
+import AVKit
 
 class OperationViewController: UIViewController {
-        
+    
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     @IBOutlet weak var snippetCollection: UICollectionView!
-        
+    
+    @IBOutlet weak var bgImgView: UIImageView!
+    @IBOutlet weak var nameLbl: UILabel!
+    @IBOutlet weak var durationLbl: UILabel!
+    @IBOutlet weak var sizeLbl: UILabel!
+    
     var snippets: [SnippetModel] = []
+    
+    var playerView: VideoPlayerView!
+    
+    private var indexPathOfSnippetOnPlaying: IndexPath? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +33,8 @@ class OperationViewController: UIViewController {
         snippetCollection.backgroundColor = CELLO
         snippetCollection.dragInteractionEnabled = true
         snippetCollection.reloadData()
+        
     }
-    
 
     /*
     // MARK: - Navigation
@@ -46,9 +56,70 @@ extension OperationViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SnippetCollectionViewCell", for: indexPath) as! SnippetCollectionViewCell
+        cell.setup(snippets[indexPath.row])
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        indexPathOfSnippetOnPlaying = indexPath
+        
+        let snippet = snippets[indexPath.row]
+        let frameInCollection = snippetCollection.layoutAttributesForItem(at: indexPath)?.frame ?? CGRect(x: 0, y: 0, width: 160, height: 120)
+        let frameInView = snippetCollection.convert(frameInCollection, to: view)
+        
+        playerView = VideoPlayerView(frame: frameInView)
+        playerView.backgroundColor = .black
+        playerView.clipsToBounds = true
+        playerView.thumbnail = snippet.thumbnail
+        view.addSubview(playerView)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(closePlayer(_:)))
+        playerView.addGestureRecognizer(tapGesture)
+
+        let url = snippets[indexPath.row].url
+        openPlayer(indexPath) {
+            self.play(url)
+        }
+    }
+    
+    func openPlayer(_ indexPath: IndexPath, completion: @escaping ()->Void) {
+        
+        UIView.animate(withDuration: 0.4, animations: {
+            self.playerView.frame = CGRect(x: 0, y: self.view.bounds.height/4, width: self.view.bounds.width, height: self.view.bounds.width*9/16)
+            self.playerView.layoutIfNeeded()
+        }) { _ in
+            completion()
+        }
+    }
+    
+    @objc func closePlayer(_ gesture: UITapGestureRecognizer) {
+        
+        if let indexPath = indexPathOfSnippetOnPlaying {
+            let frameInCollection = snippetCollection.layoutAttributesForItem(at: indexPath)?.frame ?? CGRect(x: 0, y: 0, width: 0, height: 0)
+            let frameInView = snippetCollection.convert(frameInCollection, to: view)
+            UIView.animate(withDuration: 0.4, animations: {
+                self.playerView.frame = frameInView
+                self.playerView.layoutIfNeeded()
+            }) { _ in
+                self.playerView.removeFromSuperview()
+            }
+        }
+    }
+
+    
+    func play(_ url: URL) {
+        let player = AVPlayer(url: url)
+        playerView.player = player
+        playerView.play()
+    }
+    
+    func playWithDefalut(_ url: URL) {
+        let player = AVPlayer(url: url)
+        let playerViewController = AVPlayerViewController()
+        playerViewController.player = player
+        present(playerViewController, animated: true, completion: nil)
+    }
 }
 
 extension OperationViewController: UICollectionViewDragDelegate,  UICollectionViewDropDelegate {

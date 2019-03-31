@@ -16,7 +16,14 @@ class SnippetCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var sizeLbl: UILabel!
     
     
+    func setup(_ snippet: SnippetModel) {
+        
+        bgImgView.image = snippet.thumbnail
+        nameLbl.text = snippet.name
+        
+    }
+    
     override func awakeFromNib() {
-        backgroundColor = .white
+        backgroundColor = CELLO
     }
 }
